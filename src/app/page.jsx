@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import PROJECTS_DATA from "./projects/data";
 
 // --- Data Constants ---
 
@@ -37,49 +38,6 @@ const servicesData = [
     title: "Project Consultation",
     description:
       "Expert consultation services to help you make informed decisions throughout your construction journey.",
-  },
-];
-
-const projectsData = [
-  {
-    id: 1,
-    category: "Residential",
-    title: "Luxury Residential Complex",
-    description:
-      "A 50-unit luxury residential development featuring modern amenities and sustainable design principles.",
-    year: "2023",
-    image: "/placeholder.svg?height=300&width=500",
-    badgeColor: "bg-amber-100 text-amber-800",
-  },
-  {
-    id: 2,
-    category: "Commercial",
-    title: "Corporate Headquarters",
-    description:
-      "A state-of-the-art office building designed for maximum efficiency and employee well-being.",
-    year: "2023",
-    image: "/placeholder.svg?height=300&width=500",
-    badgeColor: "bg-green-100 text-green-800",
-  },
-  {
-    id: 3,
-    category: "Industrial",
-    title: "Manufacturing Facility",
-    description:
-      "A cutting-edge manufacturing plant with advanced automation and safety features.",
-    year: "2022",
-    image: "/placeholder.svg?height=300&width=500",
-    badgeColor: "bg-slate-100 text-slate-800",
-  },
-  {
-    id: 4,
-    category: "Renovation",
-    title: "Historic Building Restoration",
-    description:
-      "Careful restoration of a historic landmark while incorporating modern functionality.",
-    year: "2022",
-    image: "/placeholder.svg?height=300&width=500",
-    badgeColor: "bg-purple-100 text-purple-800",
   },
 ];
 
@@ -236,7 +194,7 @@ const ServicesSection = () => (
 const ProjectCard = React.memo(({ project }) => (
   <Card className="overflow-hidden border-gray-200 hover:shadow-xl transition-shadow group">
     <Image
-      src={project.image}
+      src={project.mainImage}
       width="500"
       height="300"
       alt={project.title}
@@ -285,8 +243,8 @@ const ProjectsShowcase = () => (
           that showcase our expertise and attention to detail.
         </p>
       </div>
-      <div className="mx-auto grid max-w-6xl gap-8 py-12 lg:grid-cols-2">
-        {projectsData.map((project) => (
+      <div className="mx-auto grid max-w-8xl gap-8 py-12 lg:grid-cols-3">
+        {PROJECTS_DATA.slice(0, 3).map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>
